@@ -29,21 +29,26 @@
     {
       "idSolicitud": 1,
       "usuarioId": 2,
+      "sede":"Puntarenas",
+      "fechaSalida": "2025-08-27",
+      "fechaEntrada":"2025-09-01",
+      "codigo":"5CD2980D10",
       "motivo": " Terminar quiz",
       "descripcion": "Solicitud para llevarme la computadora",
-      "estado": "pendiente",
-      "fechaSalida": "2025-08-27",
-      "fechaEntrada":"2025-09-01"
+      "estado": "Pendiente"
       
     },
     {
       "idSolicitud": 2,
       "usuarioId": 3,
+      "sede":"Puntarenas",
+      "fechaSalida": "2025-08-20",
+      "fechaEntrada":"2025-08-29",
+      "codigo":"5CD2980K00",
       "motivo": " Terminar proyecto",
       "descripcion": "Problema con acceso al sistema",
-      "estado": "aceptada",
-      "fechaSalida": "2025-08-20",
-      "fechaEntrada":"2025-08-29"
+      "estado": "aceptada"
+      
     }
   ],
   "historial": [
