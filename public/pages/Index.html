@@ -11,23 +11,23 @@
 
     <h2>Seleccione una sede:</h2>
 
-    <select name="" id="" required>
-    <option value="">Puntarenas</option>
-    <option value="">La capri</option>
+    <select  id="sede" required>
+    <option value="puntarenas">Puntarenas</option>
+    <option value="la capri">La capri</option>
     </select> <br> <br>
 
     <label for="">Fecha de salida y entrada de las computadoras:</label>
-    <input type="date" name="" id="" required>
-    <input type="date" required> <br> <br>
+    <input type="date"  id="fechaSalida" required>
+    <input type="date"  id="fechaEntrada" required> <br> <br>
 
     <label for="">Código de la computadora:</label>
-    <input type="text" id=""> <br><br>
+    <input type="text" id="codigo"> <br><br>
 
     <label for="">Motivo por el que se llevará la computadora:</label>
-    <input type="text" required> <br> <br>
+    <input type="text" id="motivo"  required> <br> <br>
 
     <label for="">Descripción de solicitud:</label>
-    <input type="text" required> <br> <br>
+    <input type="text" id="descripcion" required> <br> <br>
 
     
     <h3>Condiciones:</h3>
@@ -42,9 +42,10 @@
    </ul>
 
     <label>
-     <input type="checkbox" name="condiciones" required>
+     <input type="checkbox" name="condiciones" id="condiciones" required>
      Acepto las condiciones del préstamo
    </label> <br> <br>
+   <div id="mensaje"></div>
    <button id="button">Enviar</button>
 
 

@@ -6,7 +6,7 @@
       "email": "ana@gmail.com",
       "categoria": "administrador",
       "contrasena": "ana282",
-      "residencia":"Las Delicias, Miramar"
+      "residencia": "Las Delicias, Miramar"
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "email": "carlos@hotmail.com",
       "categoria": "estudiante",
       "contrasena": "Cperez01",
-      "residencia":"20 de Noviembre, Fray Casiano"
+      "residencia": "20 de Noviembre, Fray Casiano"
     },
     {
       "id": 3,
@@ -22,33 +22,91 @@
       "email": "lucia@gmail.com",
       "categoria": "estudiante",
       "contrasena": "luMar09",
-      "residencia":"Puntarenas centro"
+      "residencia": "Puntarenas centro"
     }
   ],
   "solicitudes": [
     {
       "idSolicitud": 1,
       "usuarioId": 2,
-      "sede":"Puntarenas",
+      "sede": "Puntarenas",
       "fechaSalida": "2025-08-27",
-      "fechaEntrada":"2025-09-01",
-      "codigo":"5CD2980D10",
+      "fechaEntrada": "2025-09-01",
+      "codigo": "5CD2980D10",
       "motivo": " Terminar quiz",
       "descripcion": "Solicitud para llevarme la computadora",
       "estado": "Pendiente"
-      
     },
     {
       "idSolicitud": 2,
       "usuarioId": 3,
-      "sede":"Puntarenas",
+      "sede": "Puntarenas",
       "fechaSalida": "2025-08-20",
-      "fechaEntrada":"2025-08-29",
-      "codigo":"5CD2980K00",
+      "fechaEntrada": "2025-08-29",
+      "codigo": "5CD2980K00",
       "motivo": " Terminar proyecto",
       "descripcion": "Problema con acceso al sistema",
       "estado": "aceptada"
-      
+    },
+    {
+      "id": "7f13",
+      "sede": "",
+      "fechaSalida": "2025-08-04",
+      "fechaEntrada": "2025-08-14",
+      "codigo": "s12wf2e",
+      "motivo": "cwdc",
+      "descripcion": "cccdcc",
+      "estado": "Pendiente"
+    },
+    {
+      "id": "b23c",
+      "sede": "",
+      "fechaSalida": "2025-07-30",
+      "fechaEntrada": "2025-08-05",
+      "codigo": "s12wf2e",
+      "motivo": "cwdc",
+      "descripcion": "cccdcc",
+      "estado": "Pendiente"
+    },
+    {
+      "id": "1265",
+      "sede": "",
+      "fechaSalida": "2025-07-31",
+      "fechaEntrada": "2025-07-29",
+      "codigo": "s12wf2e",
+      "motivo": "cwdc",
+      "descripcion": "cccdcc",
+      "estado": "Pendiente"
+    },
+    {
+      "id": "4455",
+      "sede": "",
+      "fechaSalida": "2025-07-31",
+      "fechaEntrada": "2025-07-29",
+      "codigo": "s12wf2e",
+      "motivo": "cwdc",
+      "descripcion": "cccdcc",
+      "estado": "Pendiente"
+    },
+    {
+      "id": "2d58",
+      "sede": "",
+      "fechaSalida": "2025-07-31",
+      "fechaEntrada": "2025-07-29",
+      "codigo": "s12wf2e",
+      "motivo": "cwdc",
+      "descripcion": "cccdcc",
+      "estado": "Pendiente"
+    },
+    {
+      "id": "4202",
+      "sede": "la capri",
+      "fechaSalida": "2025-07-31",
+      "fechaEntrada": "2025-07-29",
+      "codigo": "s12wf2e",
+      "motivo": "cwdc",
+      "descripcion": "cccdcc",
+      "estado": "Pendiente"
     }
   ],
   "historial": [
