@@ -1,4 +1,4 @@
-import { postUsuario, getUsuarios } from "../services/servicioLogin.js";
+import { postUsuario, getUsuarios } from "../services/servicios.js";
 
 const container = document.querySelector(".container");
 const btnIncioS = document.getElementById("btnIncioS");

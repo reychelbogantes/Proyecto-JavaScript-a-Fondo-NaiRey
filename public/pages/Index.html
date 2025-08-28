@@ -7,7 +7,58 @@
     <link rel="stylesheet" href="../styles/index.css">
 </head>
 <body>
+    <div id="formulario">
+    <h1>Formulario de préstamos de computadoras</h1>
+
+    <h2>Seleccione una sede:</h2>
+
+    <select  id="sede" required>
+    <option value="puntarenas">Puntarenas</option>
+    <option value="la capri">La capri</option>
+    </select> <br> <br>
+
+    <label for="">Fecha de salida y entrada de las computadoras:</label>
+    <input type="datetime-local"  id="fechaSalida" required>
+    <input type="datetime-local"  id="fechaEntrada" required> <br> <br>
+
+    <label for="">Código de la computadora:</label>
+    <input type="text" id="codigo"> <br><br>
+
+    <label for="">Motivo por el que se llevará la computadora:</label>
+    <input type="text" id="motivo"  required> <br> <br>
+
+    <label for="">Descripción de solicitud:</label>
+    <input type="text" id="descripcion" required> <br> <br>
+
+    <h3>Firma electronica</h3>
+    <canvas id="firma" width="400" height="150" style="border:1px solid #000;"></canvas>
+    <button id="botonFirma">Borrar Firma</button>
+
     
+    <h3>Condiciones:</h3>
+    <ul>
+        <li>Si viajas en transporte público, debes resguardar tu equipo en tu bolso personal, no exponerlo.</li>
+        <li>Si llevas el equipo, procura ir acompañado.</li>
+        <li>Si está lloviendo, procura llevar el equipo en un vehículo apropiado para evitar algún daño.</li>
+        <li>Evitar jugar, descargar o utilizar el equipo para otros motivos que no sean relacionados con el estudio.</li>
+        <li>El equipo será revisado antes y después de ser entregado. Cualquier alteración o instalación indebida podría resultar en la pérdida de privilegios.</li>
+        <li>Si retiras una computadora sin haber completado el formulario y la boleta física, podrías ser amonestado.</li>
+        <li>Este formulario debe llenarse junto con la boleta física, que debe estar firmada por la persona encargada.</li>
+   </ul>
+
+    <label>
+     <input type="checkbox" name="condiciones" id="condiciones" required>
+     Acepto las condiciones del préstamo
+   </label> <br> <br>
+
+   <div id="mensaje"></div>
+
+   <button id="button">Enviar</button>
+   </div>
+
+
+
+
 
 
 
