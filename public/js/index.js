@@ -1,4 +1,4 @@
-import { postSolicitudes } from "../services/servicios.js";
+import { postSolicitudes, getUsuarios } from "../services/servicios.js";
 
 const sede = document.getElementById("sede")
 const fechaSalida = document.getElementById("fechaSalida")
@@ -15,8 +15,35 @@ const canvas = document.getElementById("firma");
 
 const espacio = canvas.getContext("2d")//crea un espacio para dibujar
 let dibujando = false;
-const usuarioId = 2
+
 const firmaBase64 = canvas.toDataURL(); //para que se vea en el deb.json
+//funcion para que se vea el id en el db.json
+async function inicializar() {
+    const usuarioLogueadoStorage = JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+    if (!usuarioLogueadoStorage) {
+        mensaje.textContent = "No se ha encontrado usuario logueado.";
+        return;
+    }
+
+    const usuarios = await getUsuarios();
+    const usuarioFiltrado = usuarios.filter(u => u.correo === usuarioLogueadoStorage.correo)[0];
+
+    if (!usuarioFiltrado) {
+        mensaje.textContent = "Usuario no encontrado en el sistema.";
+        return;
+    }
+
+    const usuarioId = usuarioFiltrado.id;
+
+    // Guardar el usuarioId en una variable global o en window para usarlo después
+    window.usuarioIdActual = usuarioId;
+}
+
+// Ejecutar la función al cargar
+inicializar();
+
+
 
 function validarMaximo10Dias(fechaSalida, fechaEntrada) {
     const salida = new Date(fechaSalida);
@@ -42,6 +69,10 @@ button.addEventListener("click",async function() {
        mensaje.textContent = "No puedes llevar la computadora por más de 10 días.";
         return;
     }
+    if (esFirmaVacia(canvas)) {
+    mensaje.textContent = "Debes firmar antes de enviar.";
+    return;
+}
     //No se envie ningun campo vacio
     if (
     sede.value.trim() === "" ||
@@ -61,7 +92,7 @@ button.addEventListener("click",async function() {
         return;
     }
     const solicitudes={
-        usuarioId:usuarioId,
+        usuarioId: window.usuarioIdActual,
         sede:sede.value,
         fechaSalida:fechaActual(),
         fechaEntrada:fechaEntrada.value,
@@ -76,6 +107,19 @@ button.addEventListener("click",async function() {
     console.log(datosAlmacenados);
     location.reload()
 })
+function esFirmaVacia(canvas) {
+    const espacio = canvas.getContext("2d");
+    const imgData = espacio.getImageData(0, 0, canvas.width, canvas.height);
+    // Recorremos los pixeles para ver si todos están vacíos (alpha = 0)
+    for (let i = 3; i < imgData.data.length; i += 4) {
+        if (imgData.data[i] !== 0) {
+            return false; // hay algo dibujado
+        }
+    }
+    return true; // canvas vacío
+}
+
+
 // Función para obtener la fecha y hora actual en formato 
 function fechaParaInput() {
     const ahora = new Date();

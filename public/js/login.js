@@ -8,6 +8,8 @@ const btnRegistro = document.getElementById("btnRegistro");
 const mensajeLogin = document.getElementById("mensajeLogin");
 const mensajeRegistro = document.getElementById("mensajeRegistro");
 
+
+
 btnRegistro.addEventListener("click", () => {
   container.classList.remove("toggle");
   mensajeLogin.textContent = "";
@@ -132,6 +134,8 @@ btnI.addEventListener("click", async function () {
     );
 
     if (usuarioEncontrado) {
+     // Guardar el usuario logueado en localStorage
+    localStorage.setItem("usuarioLogueado", JSON.stringify(usuarioEncontrado));
     mostrarMensaje(mensajeLogin, "✅ Bienvenido " + usuarioEncontrado.nombre, "success");
     sessionStorage.setItem("loggedInUser", JSON.stringify(usuarioEncontrado));
 
