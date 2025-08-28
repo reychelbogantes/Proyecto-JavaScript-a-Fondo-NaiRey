@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../styles/index.css">
 </head>
 <body>
+    <div id="formulario">
     <h1>Formulario de préstamos de computadoras</h1>
 
     <h2>Seleccione una sede:</h2>
@@ -17,8 +18,8 @@
     </select> <br> <br>
 
     <label for="">Fecha de salida y entrada de las computadoras:</label>
-    <input type="date"  id="fechaSalida" required>
-    <input type="date"  id="fechaEntrada" required> <br> <br>
+    <input type="datetime-local"  id="fechaSalida" required>
+    <input type="datetime-local"  id="fechaEntrada" required> <br> <br>
 
     <label for="">Código de la computadora:</label>
     <input type="text" id="codigo"> <br><br>
@@ -28,6 +29,10 @@
 
     <label for="">Descripción de solicitud:</label>
     <input type="text" id="descripcion" required> <br> <br>
+
+    <h3>Firma electronica</h3>
+    <canvas id="firma" width="400" height="150" style="border:1px solid #000;"></canvas>
+    <button id="botonFirma">Borrar Firma</button>
 
     
     <h3>Condiciones:</h3>
@@ -45,8 +50,11 @@
      <input type="checkbox" name="condiciones" id="condiciones" required>
      Acepto las condiciones del préstamo
    </label> <br> <br>
+
    <div id="mensaje"></div>
+
    <button id="button">Enviar</button>
+   </div>
 
 
 
