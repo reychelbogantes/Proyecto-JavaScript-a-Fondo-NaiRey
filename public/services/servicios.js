@@ -59,3 +59,18 @@ async function postSolicitudes(solicitudes) {
     }
 }
 export {postSolicitudes}
+async function getSolicitudes() {
+   try {
+      const response = await fetch("http://localhost:3001/solicitudes");
+      if (!response.ok) {
+         throw new Error("Error al obtener solicitudes");
+      }
+      const solicitud = await response.json();
+      return solicitud;
+
+   } catch (error) {
+      console.error("Hay un error al obtener las solicitudes", error);
+      throw error;
+   }
+}
+export {getSolicitudes}
