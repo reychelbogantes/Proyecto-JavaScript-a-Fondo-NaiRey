@@ -7,12 +7,33 @@
     <link rel="stylesheet" href="../styles/index.css">
 </head>
 <body>
+
+  <div class="dropdown">
+  <button class="dropbtn">Solicitudes Anteriores</button>
+  <div class="dropdown-content">
+    <div class="dropdown">
+      <button class="sub-dropbtn">Aceptadas</button>
+      <div class="sub-dropdown-content aceptadas">
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="sub-dropbtn">Denegadas</button>
+      <div class="sub-dropdown-content denegadas">
+        </div>
+    </div>
+  </div>
+</div>
+
     <div id="formulario">
     <h1>Formulario de préstamos de computadoras</h1>
 
+    <div class="padre">
+     
+    <div id="hijo1">
     <h2>Seleccione una sede:</h2>
 
     <select  id="sede" required>
+    <option value="">Sede:</option>
     <option value="puntarenas">Puntarenas</option>
     <option value="la capri">La capri</option>
     </select> <br> <br>
@@ -28,13 +49,12 @@
     <input type="text" id="motivo"  required> <br> <br>
 
     <label for="">Descripción de solicitud:</label>
-    <input type="text" id="descripcion" required> <br> <br>
-
-    <h3>Firma electronica</h3>
-    <canvas id="firma" width="400" height="150" style="border:1px solid #000;"></canvas>
-    <button id="botonFirma">Borrar Firma</button>
-
+    <input type="text" id="descripcion" required>
     
+    
+    </div>
+    <div id="hijo2">
+             
     <h3>Condiciones:</h3>
     <ul>
         <li>Si viajas en transporte público, debes resguardar tu equipo en tu bolso personal, no exponerlo.</li>
@@ -46,19 +66,28 @@
         <li>Este formulario debe llenarse junto con la boleta física, que debe estar firmada por la persona encargada.</li>
    </ul>
 
-    <label>
+   <label>
      <input type="checkbox" name="condiciones" id="condiciones" required>
      Acepto las condiciones del préstamo
-   </label> <br> <br>
+   </label> 
 
    <div id="mensaje"></div>
-
-   <button id="button">Enviar</button>
+   
+   
    </div>
 
+   </div>
+   <div>
+    <h3>Firma electronica</h3>
+    <canvas id="firma" width="400" height="150" style="border:1px solid #000;"></canvas>
+    <br>
+    <button id="botonFirma">Borrar Firma</button>
+    <div id="mensaje"></div>
+    <button id="button">Enviar</button>
 
+   </div>
 
-
+ 
 
 
 

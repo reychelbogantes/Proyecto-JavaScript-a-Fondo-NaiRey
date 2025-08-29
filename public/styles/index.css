@@ -1,0 +1,317 @@
+/* Importación de fuente de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Estilos globales y reseteo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f4f3;
+    padding: 20px;
+}
+
+#formulario {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#formulario h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Estructura del formulario con Grid */
+.padre {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; /* Cambiado de grid-gap a gap para modernidad */
+    width: 100%;
+    padding: 16px;
+}
+
+#hijo1, #hijo2 {
+    padding: 20px;
+}
+
+#hijo1 h2, #hijo2 h3 {
+    color: #3ab397;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3ab397;
+    padding-bottom: 5px;
+}
+
+#hijo1 label, #hijo2 label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+}
+
+#hijo1 input[type="text"],
+#hijo1 input[type="datetime-local"],
+#hijo1 select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+#hijo1 input[type="text"]:focus,
+#hijo1 input[type="datetime-local"]:focus,
+#hijo1 select:focus {
+    border-color: #3ab397;
+    outline: none;
+}
+
+
+
+#hijo2 ul {
+    list-style-type: none;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#hijo2 li {
+    margin-bottom: 10px;
+    color: #666;
+    line-height: 1.4;
+}
+
+#condiciones {
+    margin-right: 10px;
+}
+
+#button, #botonFirma {
+    background-color: #3ab397;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 15px;
+    width: 100%;
+}
+
+#button:hover, #botonFirma:hover {
+    background-color: #2a8b6e;
+    transform: translateY(-2px);
+}
+
+#mensaje {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#mensaje.error {
+    background-color: #ffe5e5;
+    color: #d32f2f;
+    border: 1px solid #f5c2c2;
+    opacity: 1;
+}
+
+#mensaje.success {
+    background-color: #e6ffed;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+    opacity: 1;
+}
+
+#firma {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: crosshair;
+    display: block;
+    margin: 15px 0;
+}
+
+#botonFirma {
+    background-color: #e74c3c;
+    margin-top: 0;
+}
+
+#botonFirma:hover {
+    background-color: #c0392b;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .padre {
+        grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+        gap: 20px;
+    }
+
+    #formulario {
+        padding: 20px;
+    }
+
+    #hijo1, #hijo2 {
+        padding: 10px;
+    }
+
+    #button, #botonFirma {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+/* Estilos para el submenú */
+.dropdown-content .dropdown {
+  position: relative;
+  /* Mantiene la posición relativa para el despliegue del submenú */
+}
+
+.sub-dropbtn {
+  background-color: #f9f9f9;
+  /* Fondo del botón del submenú */
+  color: #555;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.sub-dropbtn:hover {
+  background-color: #f1f1f1;
+  color: #3ab397;
+}
+
+.sub-dropdown-content {
+  display: none;
+  position: absolute;
+  /* Posicionamiento absoluto para que se desplace a un lado */
+  left: 100%;
+  /* Desplaza el submenú al 100% del ancho del padre */
+  top: 0;
+  min-width: 160px;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  border-radius: 5px;
+}
+
+.sub-dropdown-content div {
+  padding: 12px 16px;
+  color: #555;
+  white-space: nowrap;
+  /* Evita que el texto se rompa */
+  transition: background-color 0.3s ease;
+}
+
+.sub-dropdown-content div:hover {
+  background-color: #e9e9e9;
+  color: #3ab397;
+}
+
+/* Muestra el submenú cuando se hace hover sobre el sub-dropdown */
+.dropdown-content .dropdown:hover .sub-dropdown-content {
+  display: block;
+}
+/* Estilos del contenedor principal */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Estilos del botón principal "Solicitudes Anteriores" */
+.dropbtn {
+    background-color: #3ab397;
+    color: white;
+    padding: 16px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto al pasar el cursor sobre el botón principal */
+.dropbtn:hover {
+    background-color: #2a8b6e;
+    transform: translateY(-2px);
+}
+
+/* Estilos del contenedor de los submenús */
+.dropdown-content {
+    display: none;
+    /* Oculta el menú por defecto */
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 8px;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Estilos para los elementos dentro del menú desplegable */
+.dropdown-content div {
+    color: #555;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto al pasar el cursor sobre los elementos del submenú */
+.dropdown-content div:hover {
+    background-color: #f0f4f3;
+    color: #3ab397;
+}
+
+/*
+  Muestra el menú desplegable cuando el cursor está sobre el contenedor principal.
+  Esta es la clave para que el menú aparezca y desaparezca.
+*/
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Animación de entrada para el menú */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

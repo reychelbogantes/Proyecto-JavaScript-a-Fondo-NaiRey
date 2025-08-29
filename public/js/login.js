@@ -116,44 +116,44 @@ btnRegistrar.addEventListener("click", async function () {
 
 // -------- Inicio de Sesión --------
 const nombreI = document.getElementById("nombreI");
-const rolI = document.getElementById("rolI");
 const contraseñaI = document.getElementById("contrasenaI");
 const btnI = document.getElementById("btnI");
 
 btnI.addEventListener("click", async function () {
     try {
-     const usuarios = await getUsuarios();
+      const usuarios = await getUsuarios();
   
-     if (nombreI.value === "" || rolI.value === "" || contraseñaI.value === "") {
-      mostrarMensaje(mensajeLogin, "⚠️ Por favor, complete todos los campos.", "error");
-      return;
-     }
+      if (nombreI.value === "" || contraseñaI.value === "") {
+        mostrarMensaje(mensajeLogin, "⚠️ Por favor, complete todos los campos.", "error");
+        return;
+      }
 
-    const usuarioEncontrado = usuarios.find(user =>
-    user.nombre === nombreI.value && user.contraseña === contraseñaI.value && user.rol === rolI.value
-    );
+      // Buscar al usuario solo por nombre y contraseña
+      const usuarioEncontrado = usuarios.find(user =>
+        user.nombre === nombreI.value && user.contraseña === contraseñaI.value
+      );
 
-    if (usuarioEncontrado) {
-     // Guardar el usuario logueado en localStorage
-    localStorage.setItem("usuarioLogueado", JSON.stringify(usuarioEncontrado));
-    mostrarMensaje(mensajeLogin, "✅ Bienvenido " + usuarioEncontrado.nombre, "success");
-    sessionStorage.setItem("loggedInUser", JSON.stringify(usuarioEncontrado));
+      if (usuarioEncontrado) {
+        // Guardar el usuario logueado en localStorage
+        localStorage.setItem("usuarioLogueado", JSON.stringify(usuarioEncontrado));
+        mostrarMensaje(mensajeLogin, "✅ Bienvenido " + usuarioEncontrado.nombre, "success");
+        sessionStorage.setItem("loggedInUser", JSON.stringify(usuarioEncontrado));
 
-      // Redirigir según el rol del usuario
-    setTimeout(() => {
-    if (usuarioEncontrado.rol === "Estudiante") {
-     window.location.href = "../pages/Index.html";
-    } else if (usuarioEncontrado.rol === "Administrador") {
-     window.location.href = "../pages/admin.html";
-    }
-    }, 1000);
+        // Redirigir según el rol del usuario encontrado en los datos
+        setTimeout(() => {
+          if (usuarioEncontrado.rol === "Estudiante") {
+            window.location.href = "../pages/Index.html";
+          } else if (usuarioEncontrado.rol === "Administrador") {
+            window.location.href = "../pages/admin.html";
+          }
+        }, 1000);
 
-    } else {
-       mostrarMensaje(mensajeLogin, "❌ Nombre de usuario, rol o contraseña incorrectos.", "error");
-    }
+      } else {
+        mostrarMensaje(mensajeLogin, "❌ Nombre de usuario o contraseña incorrectos.", "error");
+      }
 
     } catch (error) {
-     console.error("Error al iniciar sesión:", error);
-     mostrarMensaje(mensajeLogin, "❌ Error al intentar iniciar sesión.", "error");
+      console.error("Error al iniciar sesión:", error);
+      mostrarMensaje(mensajeLogin, "❌ Error al intentar iniciar sesión.", "error");
     }
 });
