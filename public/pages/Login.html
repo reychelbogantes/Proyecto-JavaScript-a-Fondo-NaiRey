@@ -25,7 +25,7 @@
             <ion-icon name="person-circle-outline"></ion-icon>
             <input id="nombreI" type="text" placeholder="Nombre de Usuario">
             </div>
-            
+
             <!-- 🔹 Selector Rol Login 
             <select id="rolI" class="rol-select" name="rolI">
                 <option value="" disabled selected>Selecciona un rol</option>
@@ -40,7 +40,7 @@
             
             <div id="mensajeLogin"></div> <!-- 🔹 mensaje login -->
 
-            <a href="#">¿Has olvidado tu contraseña?</a>
+            <a href="#" id="forgot-password">¿Has olvidado tu contraseña?</a>
             <button id="btnI" class="btn">INICIAR SESIÓN</button>
             </section>
         </div>
@@ -102,6 +102,29 @@
             </div>
 
             </div>
+
+            <div id="forgot-password-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Recuperar Contraseña</h3>
+        <p>Ingresa tu nombre de usuario o correo electrónico.</p>
+        <input type="text" id="username-email" placeholder="Nombre de usuario o Email">
+        <button id="submit-recovery">Buscar</button>
+        <p id="message"></p>
+    </div>
+</div>
+
+<div id="change-password-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Cambiar Contraseña</h3>
+        <p>Ingresa tu nueva contraseña.</p>
+        <input type="password" id="new-password" placeholder="Nueva Contraseña">
+        <input type="password" id="confirm-password" placeholder="Confirmar Contraseña">
+        <button id="submit-change-password">Cambiar Contraseña</button>
+        <p id="change-password-message"></p>
+    </div>
+</div>
 
     <!-- Scripts -->
     <script type="module" src="../js/login.js"></script>

@@ -12,13 +12,20 @@
       "nombre": "naide",
       "correo": "rios@gmail.com",
       "rol": "Estudiante",
-      "contraseña": "1234"
+      "contraseña": "963"
     },
     {
-      "id": 1756479448809,
+      "id": "1756479448809",
       "nombre": "Reychel",
       "correo": "reychel@gmail.com",
       "rol": "Administrador",
+      "contraseña": "522"
+    },
+    {
+      "id": 1756502121830,
+      "nombre": "Mariagel",
+      "correo": "Mariagel@gmail.com",
+      "rol": "Estudiante",
       "contraseña": "123"
     }
   ],

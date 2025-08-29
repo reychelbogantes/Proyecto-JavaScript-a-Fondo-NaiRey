@@ -1,4 +1,4 @@
-import { postUsuario, getUsuarios } from "../services/servicios.js";
+import { postUsuario, getUsuarios,findUser, updatePassword  } from "../services/servicios.js";
 
 const container = document.querySelector(".container");
 const btnIncioS = document.getElementById("btnIncioS");
@@ -156,4 +156,112 @@ btnI.addEventListener("click", async function () {
       console.error("Error al iniciar sesión:", error);
       mostrarMensaje(mensajeLogin, "❌ Error al intentar iniciar sesión.", "error");
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Referencias a los elementos del DOM
+    const forgotPasswordLink = document.getElementById('forgot-password');
+    const findUserModal = document.getElementById('forgot-password-modal');
+    const changePasswordModal = document.getElementById('change-password-modal');
+    const closeFindUserBtn = document.querySelector('#forgot-password-modal .close-btn');
+    const closeChangePasswordBtn = document.querySelector('#change-password-modal .close-btn');
+    const submitFindUserBtn = document.getElementById('submit-recovery');
+    const usernameEmailInput = document.getElementById('username-email');
+    const messageElement = document.getElementById('message');
+    const newPasswordInput = document.getElementById('new-password');
+    const confirmPasswordInput = document.getElementById('confirm-password');
+    const submitChangePasswordBtn = document.getElementById('submit-change-password');
+    const changePasswordMessageElement = document.getElementById('change-password-message');
+
+    let userToUpdate = null; // Variable para almacenar el usuario encontrado
+
+    // Evento para abrir el modal de búsqueda de usuario
+    forgotPasswordLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        findUserModal.style.display = 'flex';
+        messageElement.textContent = '';
+        usernameEmailInput.value = '';
+    });
+
+    // Evento para cerrar el modal de búsqueda de usuario
+    closeFindUserBtn.addEventListener('click', () => {
+        findUserModal.style.display = 'none';
+    });
+
+    // Evento para cerrar el modal de cambio de contraseña
+    closeChangePasswordBtn.addEventListener('click', () => {
+        changePasswordModal.style.display = 'none';
+    });
+
+    // Evento para buscar al usuario
+    submitFindUserBtn.addEventListener('click', async () => {
+        const input = usernameEmailInput.value;
+        
+        if (!input) {
+            messageElement.textContent = 'Por favor, ingresa un valor.';
+            return;
+        }
+
+        try {
+            const user = await findUser(input);
+            if (user) {
+                userToUpdate = user; // Guarda el usuario encontrado
+                messageElement.textContent = 'Usuario encontrado. Por favor, ingresa tu nueva contraseña.';
+                // Esconde el modal de búsqueda y muestra el de cambio de contraseña
+                findUserModal.style.display = 'none';
+                changePasswordModal.style.display = 'flex';
+                newPasswordInput.value = '';
+                confirmPasswordInput.value = '';
+                changePasswordMessageElement.textContent = '';
+            } else {
+                messageElement.textContent = 'No se encontró un usuario con ese nombre o correo electrónico.';
+            }
+        } catch (error) {
+            messageElement.textContent = error.message;
+        }
+    });
+
+    // Evento para cambiar la contraseña
+    submitChangePasswordBtn.addEventListener('click', async () => {
+        const newPassword = newPasswordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        if (!newPassword || !confirmPassword) {
+            changePasswordMessageElement.textContent = 'Por favor, completa ambos campos.';
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            changePasswordMessageElement.textContent = 'Las contraseñas no coinciden.';
+            return;
+        }
+
+        try {
+            // Llama al servicio para actualizar la contraseña
+            await updatePassword(userToUpdate.id, { password: newPassword });
+            changePasswordMessageElement.textContent = 'Contraseña actualizada con éxito.';
+            setTimeout(() => {
+                changePasswordModal.style.display = 'none';
+            }, 2000); // Cierra el modal después de 2 segundos
+        } catch (error) {
+            changePasswordMessageElement.textContent = error.message;
+        }
+    });// Evento para cambiar la contraseña
+submitChangePasswordBtn.addEventListener('click', async () => {
+    const newPassword = newPasswordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+
+    // ... (Validaciones de campos vacíos y coincidencia son iguales) ...
+
+    try {
+        // Llama al servicio para actualizar la contraseña, pasando solo la nueva contraseña
+        await updatePassword(userToUpdate.id, newPassword); 
+        changePasswordMessageElement.textContent = 'Contraseña actualizada con éxito.';
+        setTimeout(() => {
+            changePasswordModal.style.display = 'none';
+        }, 2000);
+    } catch (error) {
+        changePasswordMessageElement.textContent = error.message;
+    }
+});
 });
