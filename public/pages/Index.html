@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
 
@@ -38,17 +39,17 @@
     <option value="la capri">La capri</option>
     </select> <br> <br>
 
-    <label for="">Fecha de salida y entrada de las computadoras:</label>
+    <label for="fechaSalida">Fecha de salida y entrada de las computadoras:</label>
     <input type="datetime-local"  id="fechaSalida" required>
-    <input type="datetime-local"  id="fechaEntrada" required> <br> <br>
+    <input type="text" placeholder="Fecha de devolució" id="fechaEntrada" required> <br> <br>
 
-    <label for="">Código de la computadora:</label>
+    <label for="codigo">Código de la computadora:</label>
     <input type="text" id="codigo"> <br><br>
 
-    <label for="">Motivo por el que se llevará la computadora:</label>
+    <label for="motivo">Motivo por el que se llevará la computadora:</label>
     <input type="text" id="motivo"  required> <br> <br>
 
-    <label for="">Descripción de solicitud:</label>
+    <label for="descripcion">Descripción de solicitud:</label>
     <input type="text" id="descripcion" required>
     
     
@@ -93,6 +94,7 @@
 
     <script type="module" src="../js/index.js"></script>
     <script type="module" src="../js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
