@@ -75,7 +75,6 @@ async function getSolicitudes() {
    }
 }
 export {getSolicitudes}
-
 // loginService.js
 /**
  * Busca un usuario por su nombre de usuario o correo electrónico con coincidencia estricta.
@@ -157,4 +156,3 @@ async function patchEstado(id, nuevoEstado) {
 }
 
 export { patchEstado };
-
