@@ -97,7 +97,11 @@ async function cargarSolicitudesDelUsuario() {
             divChecks.appendChild(label2);
             divChecks.appendChild(boton);
             
+
            // ✅ Función del botón con PATCH integrado
+
+           //  Función del botón con PATCH integrado
+
             boton.addEventListener("click", async () => {
                 let seleccion = "Ninguna";
                 if (checkbox1.checked) seleccion = checkbox1.value;
@@ -136,4 +140,17 @@ async function cargarSolicitudesDelUsuario() {
     }
 }
 
+aprobadas.addEventListener("click", () =>{
+    localStorage.setItem("filtrar", true)
+    window.location.href = "../pages/historial.html"
+})
 
+denegadas.addEventListener("click", () =>{
+    localStorage.setItem("filtrar", false)
+    window.location.href = "../pages/historial.html"
+})
+
+todas.addEventListener("click", () =>{
+    localStorage.setItem("filtrar", "todas")
+    window.location.href = "../pages/historial.html"
+})
