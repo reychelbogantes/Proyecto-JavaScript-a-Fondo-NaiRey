@@ -35,6 +35,7 @@ async function cargarSolicitudesDelUsuario() {
         // Crear tarjeta para cada solicitud
         solicitudesUsuario.forEach(s => {
             const divSolicitud = document.createElement("div");
+            divSolicitud.classList.add('solicitud-card');
             
 
             // Buscar usuario para mostrar nombre
@@ -55,19 +56,8 @@ async function cargarSolicitudesDelUsuario() {
 
             campos.forEach(c => {
                 const p = document.createElement("p");
-                /* const imagen = document.createElement("img");
-
-                imagen.src = s.firma
-                imagen.alt = "Firma del Usuario" */
-                
-
-
-                p.textContent = `${c.label}: ${c.value || "Sin dato"}`
-                
-
+                p.innerHTML = `<strong>${c.label}:</strong> ${c.value || "Sin dato"}`;
                 divSolicitud.appendChild(p);
-                /* divSolicitud.appendChild(imagen); */
-              
             });
 
             // Agregar la firma si existe
@@ -81,6 +71,7 @@ async function cargarSolicitudesDelUsuario() {
             }
             //agrega los checkbox y el boton
             const divChecks = document.createElement("div");
+            divChecks.classList.add('status-options');
 
             const label1 = document.createElement("label");
             const checkbox1 = document.createElement("input");
@@ -94,6 +85,7 @@ async function cargarSolicitudesDelUsuario() {
            
             const boton = document.createElement("button");
             boton.textContent = "Enviar";
+            boton.classList.add('btn-enviar');
             //boton.classList = ()
             label2.appendChild(checkbox2);
             label2.append(" Denegada");

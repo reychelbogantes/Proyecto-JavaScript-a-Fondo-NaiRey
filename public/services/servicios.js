@@ -59,7 +59,6 @@ async function postSolicitudes(solicitudes) {
     }
 }
 export {postSolicitudes}
-<<<<<<< HEAD
 async function getSolicitudes() {
    try {
       const response = await fetch("http://localhost:3001/solicitudes");
@@ -75,7 +74,6 @@ async function getSolicitudes() {
    }
 }
 export {getSolicitudes}
-=======
 
 // loginService.js
 /**
@@ -133,4 +131,4 @@ export const updatePassword = async (userId, newPassword) => {
         throw new Error('Ocurrió un error al actualizar la contraseña.');
     }
 };
->>>>>>> 3a5e26cde1a31b02833cabd12ee879e4125acbb2
+

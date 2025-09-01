@@ -12,7 +12,8 @@
 body {
     width: 100%;
     min-height: 100vh;
-    display: flex;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     justify-content: center;
     align-items: center;
     background-color: #f0f4f3;
@@ -33,7 +34,7 @@ body {
 
 #formulario h1 {
     font-size: 2.5rem;
-    color: #333;
+    color: #6b2c96;
     margin-bottom: 25px;
     text-align: center;
 }
@@ -314,4 +315,111 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.navbar {
+  /* Usamos flexbox para alinear el contenido */
+  display: flex;
+  justify-content: flex-end; /* Alinea los elementos al final */
+  align-items: center;
+  gap: 40px; /* Espacio entre los elementos */
+  position: relative; /* Es necesario para el posicionamiento del logo */
+  background-color: #2779cc00;
+  padding: 1rem 2rem;
+  font-family: Arial, sans-serif;
+ 
+}
+
+.logo {
+  /* Posicionamos el logo de forma absoluta para centrarlo */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat', sans-serif;
+   /* Agrega estas tres líneas para el degradado en el texto */
+  background: linear-gradient(182deg,#833ab4 0%, rgba(68, 152, 191, 1) 69%, rgba(16, 230, 201, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-family: 'Montserrat', sans-serif;
+  
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+}
+
+.nav-links a:hover {
+  background-color: #34dbca7a;
+}
+
+/* Estilos para el menú desplegable */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Estilos para el menú desplegable */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0; /* Lo alinea al borde derecho de su contenedor */
+  left: auto; /* Deshace cualquier alineación a la izquierda */
+  background-color: #ffffffb3;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin-top: 5px;
+  border-radius: 5px;
+  min-width: 180px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0; /* Lo oculta */
+  visibility: hidden; /* Lo hace no interactivo */
+  transform: translateY(10px); /* Posición inicial para la animación */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+}
+
+.dropdown-menu li a{
+  padding: 0.75rem 1.5rem;
+  color: #4e216b ;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #34dbca7a;
+}
+
+/* Muestra el menú al pasar el cursor o al hacer clic */
+.dropdown:hover .dropdown-menu,
+.dropdown.active .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.fa-caret-down{
+    color: #833ab4 ;
+    font-size: 2rem;
 }
