@@ -1,4 +1,4 @@
-import { getSolicitudes, getUsuarios } from "../services/servicios.js";
+import { getSolicitudes, getUsuarios, patchEstado } from "../services/servicios.js";
 
 const contenedor = document.getElementById("listaSolicitudes");
 
@@ -89,7 +89,9 @@ async function cargarSolicitudesDelUsuario() {
 
             checkbox1.type = "radio";
             checkbox1.name = `estado-${s.id}`;
+            checkbox1.value = "Aceptada"; 
             checkbox2.type = "radio";
+            checkbox2.value = "Denegada";
             checkbox2.name = `estado-${s.id}`;
            
             const boton = document.createElement("button");
@@ -103,12 +105,33 @@ async function cargarSolicitudesDelUsuario() {
             divChecks.appendChild(label2);
             divChecks.appendChild(boton);
             
-            //función del boton
-            boton.addEventListener("click", () => {
+           // ✅ Función del botón con PATCH integrado
+            boton.addEventListener("click", async () => {
                 let seleccion = "Ninguna";
-                if (checkbox1.checked) seleccion = "Aceptada";
-                else if (checkbox2.checked) seleccion = "Denegada";
-                alert(`Solicitud ${s.codigo}: ${seleccion}`);
+                if (checkbox1.checked) seleccion = checkbox1.value;
+                else if (checkbox2.checked) seleccion = checkbox2.value;
+
+                if (seleccion === "Ninguna") {
+                    alert(`Selecciona una opción para la solicitud ${s.codigo}.`);
+                    return;
+                }
+
+                try {
+                    const actualizado = await patchEstado(s.id, seleccion);
+                    alert(`Solicitud ${s.codigo}: Estado actualizado a ${actualizado.estado}`);
+
+                    // Actualizar texto en pantalla
+                    const estadoParrafo = divSolicitud.querySelector("p:last-child");
+                    if (estadoParrafo) estadoParrafo.textContent = `Estado: ${actualizado.estado}`;
+
+                    // Bloquear controles
+                    checkbox1.disabled = true;
+                    checkbox2.disabled = true;
+                    boton.disabled = true;
+
+                } catch (error) {
+                    console.log("Error al actualizar el estado.");
+                }
             });
 
             divSolicitud.appendChild(divChecks);
@@ -120,3 +143,5 @@ async function cargarSolicitudesDelUsuario() {
         contenedor.textContent = "Error al cargar solicitudes.";
     }
 }
+
+

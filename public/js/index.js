@@ -75,6 +75,20 @@ inicializar();
 // ASIGNAR FECHA ACTUAL
 fechaSalida.value = fechaParaInput();
 
+fechaSalida.readOnly = true;
+
+// VALIDAR FECHA DE ENTRADA >= FECHA DE SALIDA
+fechaEntrada.addEventListener("change", () => {
+    const salida = new Date(fechaSalida.value);
+    const entrada = new Date(fechaEntrada.value);
+
+    if (entrada < salida) {
+        alert("La fecha de entrada no puede ser menor a la fecha de salida.");
+        fechaEntrada.value = "";
+    }
+});
+
+
 // EVENTOS DEL CANVAS
 canvas.addEventListener("mousedown", (e) => {
     dibujando = true;

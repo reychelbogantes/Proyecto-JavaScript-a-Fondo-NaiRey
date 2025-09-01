@@ -59,7 +59,7 @@ async function postSolicitudes(solicitudes) {
     }
 }
 export {postSolicitudes}
-<<<<<<< HEAD
+
 async function getSolicitudes() {
    try {
       const response = await fetch("http://localhost:3001/solicitudes");
@@ -75,8 +75,6 @@ async function getSolicitudes() {
    }
 }
 export {getSolicitudes}
-=======
-
 // loginService.js
 /**
  * Busca un usuario por su nombre de usuario o correo electrónico con coincidencia estricta.
@@ -133,4 +131,28 @@ export const updatePassword = async (userId, newPassword) => {
         throw new Error('Ocurrió un error al actualizar la contraseña.');
     }
 };
->>>>>>> 3a5e26cde1a31b02833cabd12ee879e4125acbb2
+
+async function patchEstado(id, nuevoEstado) {
+    try {
+        const response = await fetch(`http://localhost:3001/solicitudes/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ estado: nuevoEstado })
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al actualizar el estado");
+        }
+
+        const solicitudActualizada = await response.json();
+        return solicitudActualizada;
+
+    } catch (error) {
+        console.error("Hay un error al actualizar el estado", error);
+        throw error;
+    }
+}
+
+export { patchEstado };
