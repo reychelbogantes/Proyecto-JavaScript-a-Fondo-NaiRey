@@ -15,7 +15,6 @@
       "contraseña": "963"
     },
     {
-<<<<<<< HEAD
       "id": 1756485217017,
       "nombre": "pepito",
       "correo": "pepito11@gmail.com",
@@ -28,20 +27,6 @@
       "correo": "riosna@gmail.com",
       "rol": "Administrador",
       "contraseña": "1234"
-=======
-      "id": "1756479448809",
-      "nombre": "Reychel",
-      "correo": "reychel@gmail.com",
-      "rol": "Administrador",
-      "contraseña": "522"
-    },
-    {
-      "id": 1756502121830,
-      "nombre": "Mariagel",
-      "correo": "Mariagel@gmail.com",
-      "rol": "Estudiante",
-      "contraseña": "123"
->>>>>>> 3a5e26cde1a31b02833cabd12ee879e4125acbb2
     }
   ],
   "solicitudes": [
