@@ -86,11 +86,11 @@ fechaEntrada.addEventListener("change", () => {
     const entrada = new Date(fechaEntrada.value);
 
     if (entrada < salida) {
-<<<<<<< HEAD
+
         alert("La fecha de entrada no puede ser menor a la fecha de salida.");
-=======
+
         mensaje.textContent ="La fecha de entrada no puede ser menor a la fecha de salida."
->>>>>>> cambios
+
         fechaEntrada.value = "";
     }
 });

@@ -2,22 +2,20 @@ import { getSolicitudes, getUsuarios } from "../services/servicios.js";
 
 const contenedor = document.getElementById("listaSolicitudes");
 
-<<<<<<< HEAD
-// Obtener usuario logueado desde localStorage
-const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+
 
 // Obtener parámetro 'tipo' de la URL (true → aceptadas, false → denegadas)
 const params = new URLSearchParams(window.location.search);
 const tipo = params.get("tipo"); // null si no existe
 
 const mostrarAceptadas = tipo === null || tipo === "true"; // true → aceptadas, false → denegadas
-=======
+
 // Obtentiene usuario logueado desde localStorage
 const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
 
 // Obtentiene el tipo de solicitudes a mostrar true = aceptadas, false = denegadas
 const filtrado = localStorage.getItem("filtrar"); // por defecto true
->>>>>>> cambios
 
 if (!usuarioLogueado) {
     contenedor.textContent = "No hay sesión activa.";
@@ -26,7 +24,7 @@ if (!usuarioLogueado) {
 }
 
 async function cargarSolicitudesDelUsuario() {
-<<<<<<< HEAD
+
     try {
         const solicitudes = await getSolicitudes();
         const usuarios = await getUsuarios();
@@ -37,7 +35,7 @@ async function cargarSolicitudesDelUsuario() {
             (mostrarAceptadas ? s.estado === "Aceptada" : s.estado === "Denegada")
         );
 
-=======
+
     if (filtrado === "true") {
         imprimirDatos("Aceptada")
     } else if (filtrado === "false"){
@@ -46,7 +44,7 @@ async function cargarSolicitudesDelUsuario() {
         imprimirDatosTodos()
     }
 }
-async function imprimirDatos(filtracion) {
+ async function imprimirDatos(filtracion) {
     try {
         console.log(filtracion);
         
@@ -62,7 +60,6 @@ async function imprimirDatos(filtracion) {
         console.log(solicitudesUsuario);
         
 
->>>>>>> cambios
         if (solicitudesUsuario.length === 0) {
             contenedor.textContent = mostrarAceptadas
                 ? "No tienes solicitudes aceptadas."
@@ -110,9 +107,8 @@ async function imprimirDatos(filtracion) {
     } catch (error) {
         console.error("Error al cargar solicitudes:", error);
         contenedor.textContent = "Error al cargar solicitudes.";
-<<<<<<< HEAD
+
     }
-=======
     } 
 }
 
@@ -177,5 +173,5 @@ async function imprimirDatosTodos() {
         console.error("Error al cargar solicitudes:", error);
         contenedor.textContent = "Error al cargar solicitudes.";
     } 
->>>>>>> cambios
+
 }

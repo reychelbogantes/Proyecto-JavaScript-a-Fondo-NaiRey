@@ -97,7 +97,6 @@ async function cargarSolicitudesDelUsuario() {
             divChecks.appendChild(label2);
             divChecks.appendChild(boton);
             
-
            // ✅ Función del botón con PATCH integrado
 
            //  Función del botón con PATCH integrado
