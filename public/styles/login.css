@@ -98,6 +98,11 @@ body{
     margin-top: 5px;
 }
 
+#btnIncioS, #btnRegistro{
+    background:#1112122d; 
+    border: none;
+}
+
 .btn{
    width: 170px;
    height: 45px;
@@ -106,9 +111,10 @@ body{
    border-radius: 5px;
    cursor: pointer;
    margin-top: 10px;
-   background-color: #3ab397;
+   background: linear-gradient(214deg,#833ab4 0%, rgba(68, 152, 191, 1) 69%, #10e6c9 100%);
    color: white;
 }
+
 /* Estilos para el nuevo selector de rol */
 .rol-select {
 width: 300px;
@@ -136,7 +142,6 @@ background-color: #f0f4f3;
 color: #333;
 }
 
-/**/
 
 .registro{
     transform:translateX(-100%) ;
@@ -150,12 +155,12 @@ color: #333;
    transform:translateX(0)
 }
 
-/**/
+
 .container-Bienvenida{
     position: absolute;
     width:50%;
     height: 100%;
-    background-color: #3ab397;
+    background: linear-gradient(214deg,rgba(131, 58, 180, 1) 0%, rgba(68, 152, 191, 1) 69%, rgba(16, 230, 201, 1) 100%);
     display: flex;
     align-items: center;
     transform: translateX(100%);
@@ -473,7 +478,7 @@ label.field .psuedo_select.open ul {
         padding: 20px 0; /* Añade un poco de padding */
         box-shadow: 0 5px 10px rgba(0,0,0,0.1); /* Añade una pequeña sombra para separarla */
         margin-bottom: 20px; /* Espacio entre bienvenida y formulario */
-        /* display: flex; /* Asegúrate de que siempre sea visible */
+        display: flex; /* Asegúrate de que siempre sea visible */
     }
 
     /* Si quieres una transición de abajo hacia arriba más específica para la Bienvenida */
@@ -499,7 +504,7 @@ label.field .psuedo_select.open ul {
     /* Requiere JavaScript para alternar entre "pantallas" */
     
     /* Ejemplo de cómo la bienvenida podría "aparecer" */
-    /* .container-Bienvenida.show-mobile {
+     .container-Bienvenida.show-mobile {
         transform: translateY(0);
         opacity: 1;
         pointer-events: auto;
@@ -517,5 +522,6 @@ label.field .psuedo_select.open ul {
         z-index: 10;
         background-color: #3ab397; 
         border-radius: 0;
-    } */
+    } 
 }
+
