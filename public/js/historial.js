@@ -24,7 +24,6 @@ if (!usuarioLogueado) {
 }
 
 async function cargarSolicitudesDelUsuario() {
-
     try {
         const solicitudes = await getSolicitudes();
         const usuarios = await getUsuarios();
@@ -35,16 +34,20 @@ async function cargarSolicitudesDelUsuario() {
             (mostrarAceptadas ? s.estado === "Aceptada" : s.estado === "Denegada")
         );
 
-
-    if (filtrado === "true") {
-        imprimirDatos("Aceptada")
-    } else if (filtrado === "false"){
-        imprimirDatos("Denegada")
-    } else{
-        imprimirDatosTodos()
+        if (filtrado === "true") {
+            imprimirDatos("Aceptada");
+        } else if (filtrado === "false") {
+            imprimirDatos("Denegada");
+        } else {
+            imprimirDatosTodos();
+        }
+    } catch (error) {
+        console.error("Error al cargar solicitudes del usuario:", error);
+        contenedor.textContent = "Error al cargar las solicitudes.";
     }
-}
- async function imprimirDatos(filtracion) {
+} // Aquí se cierra la función cargarSolicitudesDelUsuario
+
+async function imprimirDatos(filtracion) {
     try {
         console.log(filtracion);
         
@@ -59,7 +62,6 @@ async function cargarSolicitudesDelUsuario() {
 
         console.log(solicitudesUsuario);
         
-
         if (solicitudesUsuario.length === 0) {
             contenedor.textContent = mostrarAceptadas
                 ? "No tienes solicitudes aceptadas."
@@ -107,10 +109,8 @@ async function cargarSolicitudesDelUsuario() {
     } catch (error) {
         console.error("Error al cargar solicitudes:", error);
         contenedor.textContent = "Error al cargar solicitudes.";
-
     }
-    } 
-}
+} // Aquí se cierra la función imprimirDatos
 
 async function imprimirDatosTodos() {
     try {
