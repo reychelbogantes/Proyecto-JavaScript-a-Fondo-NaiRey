@@ -3,8 +3,6 @@ import { getSolicitudes, getUsuarios } from "../services/servicios.js";
 const contenedor = document.getElementById("listaSolicitudes");
 
 
-
-
 // Obtener parámetro 'tipo' de la URL (true → aceptadas, false → denegadas)
 const params = new URLSearchParams(window.location.search);
 const tipo = params.get("tipo"); // null si no existe
