@@ -12,6 +12,9 @@ const condiciones = document.getElementById("condiciones");
 const mensaje = document.getElementById("mensaje");
 const botonFirma = document.getElementById("botonFirma");
 const canvas = document.getElementById("firma");
+const aprobadas = document.getElementById("aprobadas")
+const denegadas = document.getElementById("denegadas")
+const todas = document.getElementById("todas")
 
 const espacio = canvas.getContext("2d");
 let dibujando = false;
@@ -83,7 +86,7 @@ fechaEntrada.addEventListener("change", () => {
     const entrada = new Date(fechaEntrada.value);
 
     if (entrada < salida) {
-        alert("La fecha de entrada no puede ser menor a la fecha de salida.");
+        mensaje.textContent ="La fecha de entrada no puede ser menor a la fecha de salida."
         fechaEntrada.value = "";
     }
 });
@@ -160,3 +163,19 @@ button.addEventListener("click", async () => {
     console.log(datosAlmacenados);
     location.reload();
 });
+
+aprobadas.addEventListener("click", () =>{
+    localStorage.setItem("filtrar", true)
+    window.location.href = "../pages/historial.html"
+})
+
+denegadas.addEventListener("click", () =>{
+    localStorage.setItem("filtrar", false)
+    window.location.href = "../pages/historial.html"
+})
+
+todas.addEventListener("click", () =>{
+    localStorage.setItem("filtrar", "todas")
+    window.location.href = "../pages/historial.html"
+})
+
