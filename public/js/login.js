@@ -9,7 +9,7 @@ const mensajeLogin = document.getElementById("mensajeLogin");
 const mensajeRegistro = document.getElementById("mensajeRegistro");
 
 
-
+// Alternar entre formularios
 btnRegistro.addEventListener("click", () => {
   container.classList.remove("toggle");
   mensajeLogin.textContent = "";
@@ -250,8 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
 submitChangePasswordBtn.addEventListener('click', async () => {
     const newPassword = newPasswordInput.value;
     const confirmPassword = confirmPasswordInput.value;
-
-    // ... (Validaciones de campos vacíos y coincidencia son iguales) ...
 
     try {
         // Llama al servicio para actualizar la contraseña, pasando solo la nueva contraseña

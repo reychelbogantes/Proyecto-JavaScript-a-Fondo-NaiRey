@@ -8,24 +8,24 @@
 </head>
 <body>
 
-  <div class="dropdown">
-  <button class="dropbtn">Solicitudes Anteriores</button>
-  <div class="dropdown-content">
-    <div class="dropdown">
-      <a href="../pages/historial.html"><button class="sub-dropbtn">Aceptadas</button></a>
-      <div class="sub-dropdown-content aceptadas">
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="sub-dropbtn">Denegadas</button>
-      <div class="sub-dropdown-content denegadas">
-      </div>
-    </div>
-  </div>
-</div>
+  <nav class="navbar">
+  <a href="#" class="logo">Préstamos de computadoras</a>
+  <ul class="nav-links">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle">
+        <ion-icon class="fas fa-caret-down" name="list-outline"></ion-icon>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="../pages/historial.html">Aprobadas</a></li>
+        <li><a href="../pages/historial.html">Denegadas</a></li>
+        <li><a href="../pages/historial.html">Todas</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
     <div id="formulario">
-    <h1>Formulario de préstamos de computadoras</h1>
+    <h1>Formulario</h1>
 
     <div class="padre">
      
@@ -92,5 +92,8 @@
 
 
     <script type="module" src="../js/index.js"></script>
+    <script type="module" src="../js/menu.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

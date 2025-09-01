@@ -1,0 +1,224 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f4f3;
+    color: #333;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #3ab397;
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+#listaSolicitudes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Crea columnas responsivas */
+    gap: 25px;
+    padding: 10px;
+    justify-items: center; /* Centra las tarjetas en su celda de la cuadrícula */
+}
+
+.solicitud-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    /* Ya no necesitas las propiedades flex aquí */
+    width: 80%; /* La tarjeta ocupará el ancho total de su celda en la cuadrícula */
+    height: 95%; /* La tarjeta se estirará para ocupar la altura total de su celda */
+    display: flex; /* Mantenemos flex para el contenido interno */
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solicitud-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+///Contenido y elementos interactivos
+.solicitud-card p {
+    margin: 8px 0;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+.solicitud-card p strong {
+    color: #555;
+    font-weight: 600;
+}
+
+.solicitud-card img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+///Botones de acción
+.status-options {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.status-options label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.status-options input[type="radio"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #3ab397;
+    color: white;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #2b8b74;
+}
+
+///Indicadores de Estado de Solicitud
+.estado-pendiente {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.estado-aceptada {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.estado-denegada {
+    color: #f44336;
+    font-weight: bold;
+}
+
+.navbar {
+  /* Usamos flexbox para alinear el contenido */
+  display: flex;
+  justify-content: flex-end; /* Alinea los elementos al final */
+  align-items: center;
+  
+  position: relative; /* Es necesario para el posicionamiento del logo */
+  background-color: #2779cc00;
+  padding: 1rem 2rem;
+  font-family: Arial, sans-serif;
+ 
+}
+
+.logo {
+  /* Posicionamos el logo de forma absoluta para centrarlo */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat', sans-serif;
+   /* Agrega estas tres líneas para el degradado en el texto */
+  background: linear-gradient(182deg,#833ab4 0%, rgba(68, 152, 191, 1) 69%, rgba(16, 230, 201, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-family: 'Montserrat', sans-serif;
+  
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+}
+
+.nav-links a:hover {
+  background-color: #34dbca7a;
+}
+
+/* Estilos para el menú desplegable */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Estilos para el menú desplegable */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0; /* Lo alinea al borde derecho de su contenedor */
+  left: auto; /* Deshace cualquier alineación a la izquierda */
+  background-color: #ffffffb3;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin-top: 5px;
+  border-radius: 5px;
+  min-width: 180px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0; /* Lo oculta */
+  visibility: hidden; /* Lo hace no interactivo */
+  transform: translateY(10px); /* Posición inicial para la animación */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+}
+
+.dropdown-menu li a{
+  padding: 0.75rem 1.5rem;
+  color: #4e216b ;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #34dbca7a;
+}
+
+/* Muestra el menú al pasar el cursor o al hacer clic */
+.dropdown:hover .dropdown-menu,
+.dropdown.active .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.fa-caret-down{
+    color: #833ab4 ;
+    font-size: 2rem;
+}

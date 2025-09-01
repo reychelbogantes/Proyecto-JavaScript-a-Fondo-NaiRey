@@ -59,7 +59,6 @@ async function postSolicitudes(solicitudes) {
     }
 }
 export {postSolicitudes}
-
 async function getSolicitudes() {
    try {
       const response = await fetch("http://localhost:3001/solicitudes");
