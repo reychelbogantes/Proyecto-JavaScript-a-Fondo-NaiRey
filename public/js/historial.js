@@ -163,7 +163,7 @@ async function imprimirDatosTodos() {
                 img.style.marginTop = "10px";
                 divSolicitud.appendChild(img);
             }
-
+              // agrega todo
             contenedor.appendChild(divSolicitud);
         });
 

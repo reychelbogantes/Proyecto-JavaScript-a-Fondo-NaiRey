@@ -21,7 +21,7 @@ const todas = document.getElementById("todas")
 const espacio = canvas.getContext("2d");
 let dibujando = false;
 
-// FUNCIONES AUXILIARES
+// Funcion para que se ejecute la firma
 function esFirmaVacia(canvas) {
     const imgData = espacio.getImageData(0, 0, canvas.width, canvas.height);
     for (let i = 3; i < imgData.data.length; i += 4) {
@@ -29,6 +29,7 @@ function esFirmaVacia(canvas) {
     }
     return true;
 }
+//muestra los mensajes
 function mostrarMensaje(contenedor, texto, tipo = "error") {
     contenedor.textContent = texto;
     contenedor.className = ""; // limpiar clases
@@ -38,7 +39,7 @@ function mostrarMensaje(contenedor, texto, tipo = "error") {
      contenedor.classList.remove("show", "error", "success");
     }, 10000);
 }
-
+//
 function fechaParaInput() {
     const ahora = new Date();
     const yyyy = ahora.getFullYear();
@@ -48,7 +49,7 @@ function fechaParaInput() {
     const min = String(ahora.getMinutes()).padStart(2, "0");
     return `${yyyy}-${mm}-${dd}T${hh}:${min}`;
 }
-
+//se vea la fecha de ahora
 function fechaActual() {
     const ahora = new Date();
     const yyyy = ahora.getFullYear();
@@ -59,7 +60,7 @@ function fechaActual() {
     const ss = String(ahora.getSeconds()).padStart(2, "0");
     return `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
 }
-
+//funcion para que no se pueda llevar la computadora mas de diez dias
 function validarMaximo10Dias(fechaSalida, fechaEntrada) {
     const salida = new Date(fechaSalida);
     const entrada = new Date(fechaEntrada);
@@ -69,7 +70,7 @@ function validarMaximo10Dias(fechaSalida, fechaEntrada) {
     return diferenciaDias <= 10;
 }
 
-// INICIALIZAR USUARIO
+// Inicializa el usuario
 async function inicializar() {
     const usuarioLogueadoStorage = JSON.parse(localStorage.getItem("usuarioLogueado"));
     if (!usuarioLogueadoStorage) {
@@ -86,12 +87,12 @@ async function inicializar() {
 }
 inicializar();
 
-// ASIGNAR FECHA ACTUAL
+// Asigna fecha actual
 fechaSalida.value = fechaParaInput();
 
 fechaSalida.readOnly = true;
 
-// VALIDAR FECHA DE ENTRADA >= FECHA DE SALIDA
+// Valida fecha de entrada y salida
 fechaEntrada.addEventListener("change", () => {
     const salida = new Date(fechaSalida.value);
     const entrada = new Date(fechaEntrada.value);
@@ -104,7 +105,7 @@ fechaEntrada.addEventListener("change", () => {
 });
 
 
-// EVENTOS DEL CANVAS
+// evento de las firmas
 canvas.addEventListener("mousedown", (e) => {
     dibujando = true;
     espacio.beginPath();
@@ -123,12 +124,12 @@ canvas.addEventListener("mousemove", (e) => {
 canvas.addEventListener("mouseup", () => dibujando = false);
 canvas.addEventListener("mouseout", () => dibujando = false);
 
-// BOTÓN BORRAR FIRMA
+// Boton para borrae la firma
 botonFirma.addEventListener("click", () => {
     espacio.clearRect(0, 0, canvas.width, canvas.height);
 });
 
-// EVENTO BOTÓN ENVIAR
+// Evento boton enviar y validaciones para que llene todos los campos
 button.addEventListener("click", async () => {
     
     if (!condiciones.checked) {
@@ -155,7 +156,7 @@ button.addEventListener("click", async () => {
         return;
     }
 
-    // Capturar la firma **en el momento de enviar**
+    // Capturar la firma en el momento de enviar
     const firmaBase64 = canvas.toDataURL("image/png");
 
     const solicitud = {
@@ -174,17 +175,17 @@ button.addEventListener("click", async () => {
     console.log(datosAlmacenados);
     location.reload();
 });
-
+//Al hacer click redirije a otra pagina donde estan solo las aceptadas
 aprobadas.addEventListener("click", () =>{
     localStorage.setItem("filtrar", true)
     window.location.href = "../pages/historial.html"
 })
-
+//Al hacer click redirije a otra pagina donde estan solo las denegadas
 denegadas.addEventListener("click", () =>{
     localStorage.setItem("filtrar", false)
     window.location.href = "../pages/historial.html"
 })
-
+//Al hacer click redirije a otra pagina donde estan todas, las tres se redirijen a la misma pagina
 todas.addEventListener("click", () =>{
     localStorage.setItem("filtrar", "todas")
     window.location.href = "../pages/historial.html"
