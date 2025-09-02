@@ -6,6 +6,17 @@ const denegadas = document.getElementById("denegadas")
 const todas = document.getElementById("todas")
 const mensaje = document.getElementById("mensaje")
 
+// -------- Función para mostrar mensajes --------
+function mostrarMensaje(contenedor, texto, tipo = "error") {
+    contenedor.textContent = texto;
+    contenedor.className = ""; // limpiar clases
+    contenedor.classList.add("show", tipo);
+
+    setTimeout(() => {
+     contenedor.classList.remove("show", "error", "success");
+    }, 4000);
+}
+
 const data = {
     firma: "data:image/png;base64,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",
     // tu base64 completo
@@ -109,13 +120,13 @@ async function cargarSolicitudesDelUsuario() {
     else if (checkbox2.checked) seleccion = checkbox2.value;
 
     if (seleccion === "Ninguna") {
-        mensaje.textContent = `Selecciona una opción para la solicitud ${s.codigo}.`;
+        mostrarMensaje(mensaje, `Selecciona una opción para la solicitud ${s.codigo}.`, "error");
         return;
     }
 
     try {
         const actualizado = await patchEstado(s.id, seleccion)
-        mensaje.textContent = ` La solicitud ${s.codigo}: a sido ${actualizado.estado} correctamente`;
+         mostrarMensaje(mensaje, `La solicitud ${s.codigo}: a sido ${actualizado.estado} correctamente`, "success");
 
         // Actualizar texto en pantalla
         const estadoParrafo = divSolicitud.querySelector("p:last-child");
@@ -130,7 +141,7 @@ async function cargarSolicitudesDelUsuario() {
         setTimeout(() => contenedor.removeChild(divSolicitud), 2000);
 
     } catch (error) {
-        mensaje.textContent = "Error al actualizar el estado.";
+        mostrarMensaje(mensaje,"Error al actualizar el estado.", "error");
         console.error("Error al actualizar el estado:", error);
     }
             });

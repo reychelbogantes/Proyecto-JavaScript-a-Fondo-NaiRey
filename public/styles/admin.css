@@ -100,7 +100,7 @@ h2 {
     background-color: #2b8b74;
 }
 
-///Indicadores de Estado de Solicitud
+/*Indicadores de Estado de Solicitud*/
 .estado-pendiente {
     color: #ff9800;
     font-weight: bold;
@@ -222,4 +222,28 @@ h2 {
 .fa-caret-down{
     color: #833ab4 ;
     font-size: 2rem;
+}
+
+#mensaje{
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#mensaje.error {
+    background-color: #ffe5e5;
+    color: #d32f2f;
+    border: 1px solid #f5c2c2;
+    opacity: 1;
+}
+
+#mensaje.success {
+    background-color: #e6ffed;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+    opacity: 1;
 }
