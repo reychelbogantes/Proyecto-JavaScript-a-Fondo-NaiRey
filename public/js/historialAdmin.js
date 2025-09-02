@@ -18,7 +18,7 @@ async function cargarSolicitudes() {
 
         let solicitudesFiltradas = [...solicitudes];
 
-        // Filtrar según el parámetro 'filtrado'
+        // Filtrar según el parámetro filtrado
         if (filtrado === "true") {
             solicitudesFiltradas = solicitudesFiltradas.filter(s => s.estado === "Aceptada");
         } else if (filtrado === "false") {
