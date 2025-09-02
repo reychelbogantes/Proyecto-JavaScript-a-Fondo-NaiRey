@@ -1,6 +1,9 @@
 import { getSolicitudes, getUsuarios, patchEstado } from "../services/servicios.js";
 
 const contenedor = document.getElementById("listaSolicitudes");
+const aprobadas = document.getElementById("aprobadas")
+const denegadas = document.getElementById("denegadas")
+const todas = document.getElementById("todas")
 
 const data = {
     firma: "data:image/png;base64,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",
@@ -23,9 +26,7 @@ async function cargarSolicitudesDelUsuario() {
         const usuarios = await getUsuarios();
 
         // Filtrar solicitudes del usuario logueado
-        const solicitudesUsuario = solicitudes; (
-            s => Number(s.usuarioId) === Number(usuarioLogueado.id)
-        );
+        const solicitudesUsuario = solicitudes.filter(s => s.estado === "Pendiente")
 
         if (solicitudesUsuario.length === 0) {
             contenedor.textContent = "No tienes solicitudes registradas.";
@@ -41,6 +42,8 @@ async function cargarSolicitudesDelUsuario() {
             // Buscar usuario para mostrar nombre
             const usuario = usuarios.find(u => Number(u.id) === Number(s.usuarioId));
             const nombreUsuario = usuario ? usuario.nombre : "Desconocido";
+
+
 
             // Campos a mostrar
             const campos = [
@@ -123,6 +126,8 @@ async function cargarSolicitudesDelUsuario() {
                     checkbox1.disabled = true;
                     checkbox2.disabled = true;
                     boton.disabled = true;
+                    contenedor.removeChild(divSolicitud);
+                    
 
                 } catch (error) {
                     console.log("Error al actualizar el estado.");
@@ -141,15 +146,15 @@ async function cargarSolicitudesDelUsuario() {
 
 aprobadas.addEventListener("click", () =>{
     localStorage.setItem("filtrar", true)
-    window.location.href = "../pages/historial.html"
+    window.location.href = "../pages/historialAdmin.html"
 })
 
 denegadas.addEventListener("click", () =>{
     localStorage.setItem("filtrar", false)
-    window.location.href = "../pages/historial.html"
+    window.location.href = "../pages/historialAdmin.html"
 })
 
 todas.addEventListener("click", () =>{
     localStorage.setItem("filtrar", "todas")
-    window.location.href = "../pages/historial.html"
+    window.location.href = "../pages/historialAdmin.html"
 })

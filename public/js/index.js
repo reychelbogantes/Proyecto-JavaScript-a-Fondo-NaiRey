@@ -10,6 +10,8 @@ const guardarInfo = document.getElementById("guardarinfo");
 const button = document.getElementById("button");
 const condiciones = document.getElementById("condiciones");
 const mensaje = document.getElementById("mensaje");
+const mensajeFecha = document.getElementById("mensajeFecha");
+const mensajeCondiciones = document.getElementById("mensajeCondiciones");
 const botonFirma = document.getElementById("botonFirma");
 const canvas = document.getElementById("firma");
 const aprobadas = document.getElementById("aprobadas")
@@ -26,6 +28,15 @@ function esFirmaVacia(canvas) {
         if (imgData.data[i] !== 0) return false;
     }
     return true;
+}
+function mostrarMensaje(contenedor, texto, tipo = "error") {
+    contenedor.textContent = texto;
+    contenedor.className = ""; // limpiar clases
+    contenedor.classList.add("show", tipo);
+
+    setTimeout(() => {
+     contenedor.classList.remove("show", "error", "success");
+    }, 10000);
 }
 
 function fechaParaInput() {
@@ -62,13 +73,13 @@ function validarMaximo10Dias(fechaSalida, fechaEntrada) {
 async function inicializar() {
     const usuarioLogueadoStorage = JSON.parse(localStorage.getItem("usuarioLogueado"));
     if (!usuarioLogueadoStorage) {
-        mensaje.textContent = "No se ha encontrado usuario logueado.";
+        mostrarMensaje(mensaje,"No se ha encontrado usuario logueado.", "error");
         return;
     }
     const usuarios = await getUsuarios();
     const usuarioFiltrado = usuarios.find(u => u.correo === usuarioLogueadoStorage.correo);
     if (!usuarioFiltrado) {
-        mensaje.textContent = "Usuario no encontrado en el sistema.";
+        mostrarMensaje(mensaje, "Usuario no encontrado en el sistema.", "error");
         return;
     }
     window.usuarioIdActual = usuarioFiltrado.id;
@@ -86,10 +97,7 @@ fechaEntrada.addEventListener("change", () => {
     const entrada = new Date(fechaEntrada.value);
 
     if (entrada < salida) {
-
-        alert("La fecha de entrada no puede ser menor a la fecha de salida.");
-
-        mensaje.textContent ="La fecha de entrada no puede ser menor a la fecha de salida."
+        mostrarMensaje(mensaje,"La fecha de entrada no puede ser menor a la fecha de salida.", "error");
 
         fechaEntrada.value = "";
     }
@@ -122,18 +130,17 @@ botonFirma.addEventListener("click", () => {
 
 // EVENTO BOTÓN ENVIAR
 button.addEventListener("click", async () => {
-    mensaje.textContent = "";
-
+    
     if (!condiciones.checked) {
-        mensaje.textContent = "Debes aceptar las condiciones antes de enviar.";
+        mostrarMensaje(mensajeCondiciones,"Debes aceptar las condiciones antes de enviar.", "error");
         return;
     }
     if (!validarMaximo10Dias(fechaSalida.value, fechaEntrada.value)) {
-        mensaje.textContent = "No puedes llevar la computadora por más de 10 días.";
+        mostrarMensaje(mensajeFecha, "No puedes llevar la computadora por más de 10 días.", "error");
         return;
     }
     if (esFirmaVacia(canvas)) {
-        mensaje.textContent = "Debes firmar antes de enviar.";
+        mostrarMensaje(mensaje, "Debes firmar antes de enviar.", "error");
         return;
     }
     if (
@@ -144,7 +151,7 @@ button.addEventListener("click", async () => {
         motivo.value.trim() === "" ||
         descripcion.value.trim() === ""
     ) {
-        mensaje.textContent = "Todos los campos son obligatorios.";
+        mostrarMensaje(mensaje,"Todos los campos son obligatorios.", "error");
         return;
     }
 

@@ -123,7 +123,7 @@ body {
     transform: translateY(-2px);
 }
 
-#mensaje {
+#mensaje, #mensajeFecha, #mensajeCondiciones{
     margin-top: 20px;
     padding: 15px;
     border-radius: 8px;
@@ -132,7 +132,18 @@ body {
     opacity: 0;
     transition: opacity 0.4s ease;
 }
-
+#mensajeFecha.error {
+    background-color: #ffe5e5;
+    color: #d32f2f;
+    border: 1px solid #f5c2c2;
+    opacity: 1;
+}
+#mensajeCondiciones.error {
+    background-color: #ffe5e5;
+    color: #d32f2f;
+    border: 1px solid #f5c2c2;
+    opacity: 1;
+}
 #mensaje.error {
     background-color: #ffe5e5;
     color: #d32f2f;
