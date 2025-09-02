@@ -4,6 +4,7 @@ const contenedor = document.getElementById("listaSolicitudes");
 const aprobadas = document.getElementById("aprobadas")
 const denegadas = document.getElementById("denegadas")
 const todas = document.getElementById("todas")
+const mensaje = document.getElementById("mensaje")
 
 const data = {
     firma: "data:image/png;base64,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",
@@ -91,7 +92,7 @@ async function cargarSolicitudesDelUsuario() {
             const boton = document.createElement("button");
             boton.textContent = "Enviar";
             boton.classList.add('btn-enviar');
-            //boton.classList = ()
+          
             label2.appendChild(checkbox2);
             label2.append(" Denegada");
             label1.appendChild(checkbox1);
@@ -100,38 +101,38 @@ async function cargarSolicitudesDelUsuario() {
             divChecks.appendChild(label2);
             divChecks.appendChild(boton);
             
-           // ✅ Función del botón con PATCH integrado
-
+        
            //  Función del botón con PATCH integrado
-
             boton.addEventListener("click", async () => {
-                let seleccion = "Ninguna";
-                if (checkbox1.checked) seleccion = checkbox1.value;
-                else if (checkbox2.checked) seleccion = checkbox2.value;
+    let seleccion = "Ninguna";
+    if (checkbox1.checked) seleccion = checkbox1.value;
+    else if (checkbox2.checked) seleccion = checkbox2.value;
 
-                if (seleccion === "Ninguna") {
-                    alert(`Selecciona una opción para la solicitud ${s.codigo}.`);
-                    return;
-                }
+    if (seleccion === "Ninguna") {
+        mensaje.textContent = `Selecciona una opción para la solicitud ${s.codigo}.`;
+        return;
+    }
 
-                try {
-                    const actualizado = await patchEstado(s.id, seleccion);
-                    alert(`Solicitud ${s.codigo}: Estado actualizado a ${actualizado.estado}`);
+    try {
+        const actualizado = await patchEstado(s.id, seleccion)
+        mensaje.textContent = ` La solicitud ${s.codigo}: a sido ${actualizado.estado} correctamente`;
 
-                    // Actualizar texto en pantalla
-                    const estadoParrafo = divSolicitud.querySelector("p:last-child");
-                    if (estadoParrafo) estadoParrafo.textContent = `Estado: ${actualizado.estado}`;
+        // Actualizar texto en pantalla
+        const estadoParrafo = divSolicitud.querySelector("p:last-child");
+        if (estadoParrafo) estadoParrafo.textContent = `Estado: ${actualizado.estado}`;
 
-                    // Bloquear controles
-                    checkbox1.disabled = true;
-                    checkbox2.disabled = true;
-                    boton.disabled = true;
-                    contenedor.removeChild(divSolicitud);
-                    
+        // Bloquear controles
+        checkbox1.disabled = true;
+        checkbox2.disabled = true;
+        boton.disabled = true;
 
-                } catch (error) {
-                    console.log("Error al actualizar el estado.");
-                }
+        // Remover tarjeta después de 2 segundos
+        setTimeout(() => contenedor.removeChild(divSolicitud), 2000);
+
+    } catch (error) {
+        mensaje.textContent = "Error al actualizar el estado.";
+        console.error("Error al actualizar el estado:", error);
+    }
             });
 
             divSolicitud.appendChild(divChecks);
@@ -143,17 +144,17 @@ async function cargarSolicitudesDelUsuario() {
         contenedor.textContent = "Error al cargar solicitudes.";
     }
 }
-
+//Al hacer click redirije a otra pagina donde estan solo las aceptadas
 aprobadas.addEventListener("click", () =>{
     localStorage.setItem("filtrar", true)
     window.location.href = "../pages/historialAdmin.html"
 })
-
+//Al hacer click redirije a otra pagina donde estan solo las denegadas
 denegadas.addEventListener("click", () =>{
     localStorage.setItem("filtrar", false)
     window.location.href = "../pages/historialAdmin.html"
 })
-
+//Al hacer click redirije a otra pagina donde estan todas, las tres se redirijen a la misma pagina
 todas.addEventListener("click", () =>{
     localStorage.setItem("filtrar", "todas")
     window.location.href = "../pages/historialAdmin.html"
