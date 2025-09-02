@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Llama al servicio para actualizar la contraseña
-            await updatePassword(userToUpdate.id, { password: newPassword });
+            await updatePassword(userToUpdate.id, { contraseña: newPassword });
             changePasswordMessageElement.textContent = 'Contraseña actualizada con éxito.';
             setTimeout(() => {
                 changePasswordModal.style.display = 'none';
@@ -251,15 +251,5 @@ submitChangePasswordBtn.addEventListener('click', async () => {
     const newPassword = newPasswordInput.value;
     const confirmPassword = confirmPasswordInput.value;
 
-    try {
-        // Llama al servicio para actualizar la contraseña, pasando solo la nueva contraseña
-        await updatePassword(userToUpdate.id, newPassword); 
-        changePasswordMessageElement.textContent = 'Contraseña actualizada con éxito.';
-        setTimeout(() => {
-            changePasswordModal.style.display = 'none';
-        }, 2000);
-    } catch (error) {
-        changePasswordMessageElement.textContent = error.message;
-    }
 });
 });

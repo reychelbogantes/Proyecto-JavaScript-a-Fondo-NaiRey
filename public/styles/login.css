@@ -50,7 +50,7 @@ body{
 }
 
 .container-form h2{
-    font-size: 30p;
+    font-size: 30px;
     margin-bottom: 20px;
 }
 
@@ -431,6 +431,31 @@ label.field .psuedo_select.open ul {
         /* Media Queries para diseño responsivo con transición vertical */
 
 @media (max-width: 768px) {
+    /* Estado inicial: mostrar login, ocultar registro */
+.inicioS {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.registro {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* Cuando activamos toggle-mobile → muestra registro desde abajo */
+.container.toggle-mobile .inicioS {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.container.toggle-mobile .registro {
+  transform: translateY(0);
+  opacity: 1;
+}
+
     /* Ajustes generales del contenedor principal */
     .container {
         width: 95%;

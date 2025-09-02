@@ -201,13 +201,14 @@ h2 {
   z-index: 100;
 }
 
-.dropdown-menu li a{
+.dropdown-menu li{
   padding: 0.75rem 1.5rem;
   color: #4e216b ;
   font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
 }
 
-.dropdown-menu li a:hover {
+.dropdown-menu li:hover {
   background-color: #34dbca7a;
 }
 
