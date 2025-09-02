@@ -18,3 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+flatpickr("#fechaEntrada", {
+  enableTime: true,
+  dateFormat: "Y-m-d H:i",
+  
+  // Puedes agregar más opciones de personalización aquí
+});

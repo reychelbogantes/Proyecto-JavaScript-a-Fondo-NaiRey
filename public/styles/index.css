@@ -423,3 +423,42 @@ body {
     color: #833ab4 ;
     font-size: 2rem;
 }
+
+/* Estilo del calendario en general */
+.flatpickr-calendar {
+  box-shadow: 0 4px 20px rgb(0, 0, 0); /* Sombra sutil */
+  border: none;
+  border-radius: 5px; /* Esquinas más redondeadas */
+  font-family: 'Inter', sans-serif; /* Cambiar la fuente */
+}
+
+/* Estilo de los días y la selección */
+.flatpickr-day {
+  border-radius: 6px;
+  padding: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.flatpickr-day:hover {
+  background-color: #f0f4f8; /* Un gris claro al pasar el mouse */
+  color: #1a202c; /* Un color de texto oscuro */
+}
+
+.flatpickr-day.selected {
+  background-color: #5cb3adac !important; /* Color principal de selección */
+  color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de los días de otros meses */
+.flatpickr-day.nextMonthDay,
+.flatpickr-day.prevMonthDay {
+  opacity: 0.5;
+}
+
+/* Estilo de la navegación */
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  fill: #4a5568;
+}

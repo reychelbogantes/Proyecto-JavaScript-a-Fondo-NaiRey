@@ -36,7 +36,7 @@ async function cargarSolicitudesDelUsuario() {
             imprimirDatos("Aceptada");
         } else if (filtrado === "false") {
             imprimirDatos("Denegada");
-        } else {
+        }else {
             imprimirDatosTodos();
         }
     } catch (error) {
